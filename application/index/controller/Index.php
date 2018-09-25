@@ -134,8 +134,8 @@ class Index
             $story_match_one = StoryMatch::get(['user_id' => $user_id, 'activity_id' => $activity_id]);
             if (!$story_match_one) {
                 $story_one = Story::where([['user_id','<>', $user_id], ['activity_id', '=', $activity_id]])
-                                ->order('rand()')
                                 ->order('match_count', 'asc')
+                                ->order('rand()') 
                                 ->find();
                 if ($story_one) {
                     $story_match_one = new StoryMatch;
